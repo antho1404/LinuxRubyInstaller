@@ -9,9 +9,6 @@
 sudo apt-get update
 sudo apt-get install build-essential openssl libreadline6 libreadline-dev libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison pkg-config
 
-if postgresql
-  sudo apt-get install postgresql
-
 # get the script to intall rvm then run it
 bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
 

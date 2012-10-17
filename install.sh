@@ -52,7 +52,7 @@ install_ruby() {
 install_databases() {
   for x in $DATABASES
   do
-    /home/antho/$DIR/databaseInstaller/$x.sh
+    $DIR/databaseInstaller/$x.sh
   done
 }
 

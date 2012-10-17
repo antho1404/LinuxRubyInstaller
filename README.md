@@ -11,6 +11,9 @@ If you need a specific version of ruby you can use the argument -v
 
 Sometimes it is usefull to have databases installed (in case of using Rails for example). In this case your can add a list of databases to install
   > .install -d postgresql,mysql
+
 For now, only postgresql, mysql, sqlite3 and mongodb are supported
+
+--
 
 Hope this will be helpfull and feel free to contact me if you have some issues with other versions or anything else

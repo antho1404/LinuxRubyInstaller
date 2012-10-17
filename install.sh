@@ -1,10 +1,5 @@
 #!/bin/bash
 
-############# HOW TO USE IT #############
-### $1 -> ruby version
-### ./install_rails.sh 1.9.2
-#########################################
-
 VERSION="1.9.3"
 DATABASES=[]
 DIR=`dirname $0`

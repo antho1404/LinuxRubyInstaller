@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-VERSION="1.9.3"
+VERSION="1.9.3-p286"
 ENVIRONMENT="rvm"
-DATABASES=[]
+DATABASES="no"
 DIR=`dirname $0`
 
 usage() {
@@ -13,7 +13,7 @@ usage() {
   echo ""
   echo "options:"
   echo "  -h  Help"
-  # echo "  -e  Specify the environment for ruby ($ENVIRONMENT by default) [rvm,rbenv]"
+  echo "  -e  Specify the environment for ruby ($ENVIRONMENT by default) [rvm,rbenv]"
   echo "  -v  Specify the version of ruby you want ($VERSION by default)"
   echo "  -d  Databases you want to install (empty by default) [postgresql,mysql,mongodb,sqlite3]"
 }
@@ -46,7 +46,9 @@ install_rbenv() {
   echo '### Load rbenv environment' >> ~/.bashrc
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
   echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-  exec $SHELL
+  source ~/.bashrc
+
+  sudo ~/.rbenv/plugins/install.sh
 }
 
 install_ruby() {
@@ -75,7 +77,10 @@ install_bundler() {
 install_databases() {
   for x in $DATABASES
   do
-    $DIR/databaseInstaller/$x.sh
+    if [ $x != "no" ] 
+    then
+      $DIR/databaseInstaller/$x.sh
+    fi
   done
 }
 
@@ -90,8 +95,7 @@ do
       exit 1
       ;;
     e)
-      # uncomment to test using rbenv
-      #ENVIRONMENT=$OPTARG
+      ENVIRONMENT=$OPTARG
       ;;
     v)
       VERSION=$OPTARG
